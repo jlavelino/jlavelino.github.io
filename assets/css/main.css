@@ -613,7 +613,7 @@ section,
 .resume .resume-item h4 {
   line-height: 15px;
   font-size: 22px;
-  font-weight: 600;
+  font-weight: 800;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin-bottom: 10px;
@@ -681,4 +681,11 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+/*--------------------------------------------------------------
+# Footer Section
+--------------------------------------------------------------*/
+#foot {
+  font-size: 18px;
 }
