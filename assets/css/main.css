@@ -493,6 +493,7 @@ section,
 }
 
 .about .content ul {
+  font-size: 22px;
   list-style: none;
   padding: 0;
 }
@@ -564,6 +565,7 @@ section,
 }
 
 .skills .progress .skill {
+  font-size: 16px;
   color: var(--heading-color);
   padding: 0;
   margin: 0 0 6px 0;
@@ -609,8 +611,8 @@ section,
 }
 
 .resume .resume-item h4 {
-  line-height: 18px;
-  font-size: 18px;
+  line-height: 15px;
+  font-size: 22px;
   font-weight: 600;
   text-transform: uppercase;
   color: color-mix(in srgb, var(--default-color), transparent 20%);
@@ -627,14 +629,11 @@ section,
 
 .resume .resume-item ul {
   padding-left: 20px;
+  font-size: 18px;
 }
 
 .resume .resume-item ul li {
   padding-bottom: 10px;
-}
-
-.resume .resume-item:last-child {
-  padding-bottom: 0;
 }
 
 .resume .resume-item::before {
