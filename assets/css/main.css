@@ -443,7 +443,7 @@ section,
 
 .hero h2 {
   margin: 0;
-  font-size: 64px;
+  font-size: 50px;
   font-weight: 700;
 }
 
@@ -462,7 +462,7 @@ section,
 }
 
 .hero .social-links a {
-  font-size: 20px;
+  font-size: 25px;
   display: inline-block;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
   line-height: 1;
