@@ -688,3 +688,26 @@ section,
 #foot {
   font-size: 18px;
 }
+
+.zoom-icon {
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+.position-relative:hover .zoom-icon {
+  opacity: 1;
+}
+.zoom-icon i {
+  padding: 6px; /* small padding */
+  border-radius: 50%; /* round shape */
+  font-size: 2rem; /* small size */
+}
+
+/* Smooth image zoom */
+.project-content img {
+  transition: transform 0.3s ease;
+}
+
+.project-content:hover img {
+  transform: scale(1.08); /* smaller zoom effect */
+}
