@@ -1,11 +1,3 @@
-/**
- * Template Name: MyResume
- * Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
- * Updated: Jun 29 2024 with Bootstrap v5.3.3
- * Author: BootstrapMade.com
- * License: https://bootstrapmade.com/license/
- */
-
 (function () {
   "use strict";
 
@@ -273,3 +265,97 @@ themeSwitch.addEventListener("change", () => {
     localStorage.setItem("theme", "light");
   }
 });
+
+const nameEl = document.getElementById("profileName");
+const editBtn = document.getElementById("editNameBtn");
+const editIcon = editBtn.querySelector("i");
+
+let prevName = nameEl.childNodes[0].textContent.trim();
+let cancelBtn; // cancel button reference
+
+editBtn.addEventListener("click", () => {
+  const editing = editBtn.dataset.editing === "true";
+
+  if (!editing) {
+    // enter edit mode
+    prevName = nameEl.childNodes[0].textContent.trim();
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = prevName;
+    input.id = "nameInput";
+
+    // replace text with input (keep button)
+    nameEl.insertBefore(input, editBtn);
+    nameEl.childNodes[0].remove();
+
+    input.focus();
+
+    // change icon to check
+    editIcon.classList.remove("bi-pencil-fill");
+    editIcon.classList.add("bi-check-circle-fill");
+    editIcon.classList.add("save-icon"); // add save style
+
+    // create cancel button
+    cancelBtn = document.createElement("button");
+    cancelBtn.className = "btn btn-link p-0 ms-2 cancel-btn";
+    cancelBtn.id = "cancelBtn";
+    cancelBtn.innerHTML = `<i class="bi bi-x-circle-fill"></i>`;
+
+    // insert cancel button after save button
+    editBtn.insertAdjacentElement("afterend", cancelBtn);
+
+    // cancel logic
+    cancelBtn.addEventListener("click", () => {
+      cancelEdit();
+    });
+
+    editBtn.dataset.editing = "true";
+
+    // Enter = save
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        saveName();
+      }
+    });
+  } else {
+    // save mode
+    saveName();
+  }
+});
+
+function saveName() {
+  const input = document.getElementById("nameInput");
+  const newName = input.value.trim() || prevName;
+
+  // replace input with text
+  nameEl.insertBefore(document.createTextNode(newName + " "), editBtn);
+  input.remove();
+
+  // change icon back to pencil
+  editIcon.classList.remove("bi-check-circle-fill", "save-icon");
+  editIcon.classList.add("bi-pencil-fill");
+
+  // remove cancel button
+  if (cancelBtn) cancelBtn.remove();
+
+  editBtn.dataset.editing = "false";
+  prevName = newName;
+}
+
+function cancelEdit() {
+  const input = document.getElementById("nameInput");
+  if (input) input.remove();
+
+  // restore previous name
+  nameEl.insertBefore(document.createTextNode(prevName + " "), editBtn);
+
+  // change icon back to pencil
+  editIcon.classList.remove("bi-check-circle-fill", "save-icon");
+  editIcon.classList.add("bi-pencil-fill");
+
+  // remove cancel button
+  if (cancelBtn) cancelBtn.remove();
+
+  editBtn.dataset.editing = "false";
+}
