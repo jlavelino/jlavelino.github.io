@@ -1,15 +1,3 @@
-/**
-* Template Name: MyResume
-* Template URL: https://bootstrapmade.com/free-html-bootstrap-template-my-resume/
-* Updated: Jun 29 2024 with Bootstrap v5.3.3
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
-
-/*--------------------------------------------------------------
-# Font & Color Variables
-# Help: https://bootstrapmade.com/color-system/
---------------------------------------------------------------*/
 /* Fonts */
 :root {
   --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
@@ -710,4 +698,100 @@ section,
 
 .project-content:hover img {
   transform: scale(1.08); /* smaller zoom effect */
+}
+
+/* Overlay to dim background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transition: background 0.6s ease;
+  z-index: -1; /* stays behind content */
+}
+
+/* Dark mode overlay */
+body.dark-mode::before {
+  background: rgba(0, 0, 0, 0.7); /* stronger dimming */
+}
+
+/* Dark mode body */
+body.dark-mode {
+  background-color: #121212; /* fallback dark background */
+  color: #f0f0f0;
+  transition: color 0.6s ease, background-color 0.6s ease;
+}
+
+/* Headings, paragraphs, spans, links */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode p,
+body.dark-mode a,
+body.dark-mode li,
+body.dark-mode span,
+body.dark-mode strong {
+  color: #f0f0f0 !important;
+}
+
+/* Link hover effect in dark mode */
+body.dark-mode a:hover {
+  color: #a0e0ff !important;
+}
+
+.theme-toggle-switch {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 9999;
+}
+
+.theme-toggle-switch input {
+  display: none; /* hide the default checkbox */
+}
+
+.theme-toggle-switch label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70px; /* smaller width */
+  height: 35px; /* smaller height */
+  background: #33b3f3; /* sun color by default */
+  border-radius: 35px;
+  position: relative;
+  cursor: pointer;
+  padding: 0 5px; /* smaller padding */
+  transition: background 0.3s ease;
+}
+
+.theme-toggle-switch label i {
+  font-size: 18px; /* smaller icon */
+  color: white;
+  transition: opacity 0.3s ease;
+}
+
+.theme-toggle-switch label .slider {
+  position: absolute;
+  top: 3px; /* adjust for smaller toggle */
+  left: 3px;
+  width: 28px; /* smaller slider */
+  height: 28px; /* smaller slider */
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Dark mode */
+.theme-toggle-switch input:checked + label {
+  background: #34495e; /* moon background */
+}
+
+.theme-toggle-switch input:checked + label .slider {
+  transform: translateX(35px); /* slide to the right */
 }

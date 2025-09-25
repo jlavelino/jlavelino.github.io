@@ -252,3 +252,24 @@ document.querySelectorAll(".project-content img, .zoom-icon").forEach((el) => {
     new bootstrap.Modal(document.getElementById("projectModal")).show();
   });
 });
+
+const themeSwitch = document.getElementById("themeSwitch");
+
+// Apply saved theme on page load
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark-mode");
+  themeSwitch.checked = true;
+} else {
+  document.body.classList.remove("dark-mode");
+}
+
+// Toggle theme on switch change
+themeSwitch.addEventListener("change", () => {
+  if (themeSwitch.checked) {
+    document.body.classList.add("dark-mode");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.body.classList.remove("dark-mode");
+    localStorage.setItem("theme", "light");
+  }
+});
